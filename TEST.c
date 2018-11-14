@@ -499,12 +499,10 @@ void Display (void *pdata)
 	}
     for (;;) 
     {
-		data = OSQPend(ToDisplay, 0, &err);		/* Receives a message from mailbox  */
+		dat = OSQPend(ToDisplay, 0, &err);		/* Receives a message from mailbox  */
 
 		if(err == OS_NO_ERR)                               /* Check if there has been an error  */
-        {
-			dat = (Structure*)data;							/* Converting received data to structure type */
-			
+        {			
 			nr = dat->taskNumber;
 			
 			if (nr==0)									/* If number is 0, data from keyboard */
@@ -739,7 +737,7 @@ void QTask(void *pdata)
 			x++;
 		}
 		
-		counter++;										/* Counter incrementation 					*/
+		counter=1;										/* Counter incrementation 					*/
 		
 		OSTimeDly(1);									/* Wait one tick                          */
 	}
